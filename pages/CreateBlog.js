@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 
+const backend_url = process.env.NEXT_PUBLIC_BACKEND_URL
+
 const CreateBlog = () => {
 
   const [formState, setFormState] = useState({
@@ -40,7 +42,8 @@ const CreateBlog = () => {
 
     axios
 
-    .post(`http://localhost:8000/CreateBlog/${currentUser}`, formState)
+    // .post(`http://localhost:8000/CreateBlog/${currentUser}`, formState)
+    .post(`${backend_url}CreateBlog/${currentUser}`, formState)
 
     .then(response => {
 

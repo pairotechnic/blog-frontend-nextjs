@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Navbar from '../components/Navbar'
 
+const backend_url = process.env.NEXT_PUBLIC_BACKEND_URL
+
 const ChangePassword = () => {
 
   const [formState, setFormState] = useState({
@@ -20,12 +22,6 @@ const ChangePassword = () => {
 
   const router = useRouter()
 
-  // useEffect(() => {
-  //   const currentUser = localStorage.getItem('user')
-  // }, [])
-
-  // const {setUser} = useContext(UserContext)
-
   const handleInputChange = (e) => {
     setFormState({
       ...formState,
@@ -37,15 +33,14 @@ const ChangePassword = () => {
 
     e.preventDefault();
 
-    // setLoginError('')
-
     console.log("Console Log Before axios.post ")
 
     const currentUser = localStorage.getItem('user')
 
     axios
 
-      .post(`http://localhost:8000/ChangePassword/${currentUser}`, formState)
+      // .post(`http://localhost:8000/ChangePassword/${currentUser}`, formState)
+      .post(`${backend_url}ChangePassword/${currentUser}`, formState)
 
       .then(response => {
 
@@ -85,11 +80,6 @@ const ChangePassword = () => {
           break;
 
         }
-
-        // Update loginError to display the error message below the respective input field
-        // if (error.response.data.error === 'Either username or password is incorrect') {
-        //   setLoginError('Either username or password is incorrect')
-        // }
 
       })
 

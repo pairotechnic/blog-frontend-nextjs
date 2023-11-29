@@ -8,6 +8,8 @@ import CreateBlogButton from '@/components/CreateBlogButton'
 import BlogPostList from '@/components/BlogPostList'
 import BlogCommentList from '@/components/BlogCommentList'
 
+const backend_url = process.env.NEXT_PUBLIC_BACKEND_URL
+
 const Profile = () => {
 
   const [first_name, setFirst_name] = useState('')
@@ -35,7 +37,8 @@ const Profile = () => {
     if (username) {
       // Fetch posts of the user
       axios
-        .get(`http://localhost:8000/Blogs/${username}`)
+        // .get(`http://localhost:8000/Blogs/${username}`)
+        .get(`${backend_url}Blogs/${username}`)
         .then(response => {
           setPosts(response.data)
           // setLoading(false) // Add this line
@@ -46,7 +49,8 @@ const Profile = () => {
         })
 
       axios
-        .get(`http://localhost:8000/Comments/${username}`)
+        // .get(`http://localhost:8000/Comments/${username}`)
+        .get(`${backend_url}Comments/${username}`)
         .then(response => {
           setComments(response.data)
         })
@@ -55,7 +59,8 @@ const Profile = () => {
         })
 
       axios
-        .get(`http://localhost:8000/Account/${username}`)
+        // .get(`http://localhost:8000/Account/${username}`)
+        .get(`${backend_url}Account/${username}`)
         .then(response => {
           setFirst_name(response.data.first_name)
           setLast_name(response.data.last_name)

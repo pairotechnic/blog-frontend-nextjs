@@ -5,6 +5,8 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 import React, { useEffect, useRef, useState } from 'react'
 
+const backend_url = process.env.NEXT_PUBLIC_BACKEND_URL
+
 const BlogPage = () => {
 
   const [post, setPost] = useState({
@@ -51,7 +53,8 @@ const BlogPage = () => {
 
     axios
 
-      .post(`http://localhost:8000/CreateComment`, { currentUser, post_id, inputComment })
+      // .post(`http://localhost:8000/CreateComment`, { currentUser, post_id, inputComment })
+      .post(`${backend_url}CreateComment`, { currentUser, post_id, inputComment })
 
       .then(response => {
 
@@ -59,7 +62,8 @@ const BlogPage = () => {
         console.log(response.data)
 
         axios
-          .get(`http://localhost:8000/Blog/${post_id}`)
+          // .get(`http://localhost:8000/Blog/${post_id}`)
+          .get(`${backend_url}Blog/${post_id}`)
           .then(response => {
             setPost(response.data)
           })
@@ -72,7 +76,8 @@ const BlogPage = () => {
       .then(() => {
         // Fetch the comments data
         axios
-          .post(`http://localhost:8000/Comments`, { post_id })
+          // .post(`http://localhost:8000/Comments`, { post_id })
+          .post(`${backend_url}Comments`, { post_id })
           .then(response => {
             setComments(response.data)
             console.log("setComments response.data : " + response.data)
@@ -103,7 +108,8 @@ const BlogPage = () => {
 
       // Fetch the post data
       axios
-        .get(`http://localhost:8000/Blog/${post_id}`)
+        // .get(`http://localhost:8000/Blog/${post_id}`)
+        .get(`${backend_url}Blog/${post_id}`)
         .then(response => {
           setPost(response.data)
         })
@@ -113,7 +119,8 @@ const BlogPage = () => {
 
       // Fetch the comments data
       axios
-        .post(`http://localhost:8000/Comments`, { post_id })
+        // .post(`http://localhost:8000/Comments`, { post_id })
+        .post(`${backend_url}Comments`, { post_id })
         .then(response => {
           setComments(response.data)
         })

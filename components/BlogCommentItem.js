@@ -4,6 +4,10 @@ import React, { useEffect, useState } from 'react'
 import { getTimeAgo } from './getTimeAgo'
 import { useRouter } from 'next/router'
 
+// dotenv.config({ path : path.resolve('../.env') })
+
+const backend_url = process.env.NEXT_PUBLIC_BACKEND_URL
+
 const BlogCommentItem = ({ comment }) => {
 
   const router = useRouter()
@@ -25,7 +29,8 @@ const BlogCommentItem = ({ comment }) => {
     const currentUser = localStorage.getItem('user')
 
     axios
-      .post(`http://localhost:8000/CommentLikeDislikeCount`, { comment_id })
+      // .post(`http://localhost:8000/CommentLikeDislikeCount`, { comment_id })
+      .post(`${backend_url}CommentLikeDislikeCount`, { comment_id })
       .then(response => {
         setLikeCount(response.data.like_count)
         setDislikeCount(response.data.dislike_count)
@@ -38,7 +43,8 @@ const BlogCommentItem = ({ comment }) => {
 
     // Fetch the currrent post reaction by the current logged in user
     axios
-      .post(`http://localhost:8000/CurrentCommentReaction`, { currentUser, comment_id })
+      // .post(`http://localhost:8000/CurrentCommentReaction`, { currentUser, comment_id })
+      .post(`${backend_url}CurrentCommentReaction`, { currentUser, comment_id })
       .then(response => {
         setCurrentReaction(response.data)
         // console.log("comment_id : " + comment_id)
@@ -83,7 +89,7 @@ const BlogCommentItem = ({ comment }) => {
 
     axios
 
-      .post(`http://localhost:8000/processCommentReaction`, { username, comment_id, clicked_reaction })
+      .post(`${backend_url}processCommentReaction`, { username, comment_id, clicked_reaction })
 
       .then(response => {
 

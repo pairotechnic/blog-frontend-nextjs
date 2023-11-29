@@ -3,6 +3,8 @@ import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
+const backend_url = process.env.NEXT_PUBLIC_BACKEND_URL
+
 const Login = () => {
 
   const [formState, setFormState] = useState({
@@ -31,7 +33,8 @@ const Login = () => {
 
     axios
 
-      .post("http://localhost:8000/login", formState)
+      // .post(`http://localhost:8000/login`, formState)
+      .post(`${backend_url}login`, formState)
 
       .then(response => {
 

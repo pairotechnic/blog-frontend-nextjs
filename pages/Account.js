@@ -4,6 +4,8 @@ import { useRouter } from 'next/router'
 import Navbar from '../components/Navbar'
 import Link from 'next/link'
 
+const backend_url = process.env.NEXT_PUBLIC_BACKEND_URL
+
 const Account = () => {
 
   const [formState, setFormState] = useState({
@@ -30,7 +32,8 @@ const Account = () => {
     if (currentUser) {
 
       axios
-        .get(`http://localhost:8000/Account/${currentUser}`)
+        // .get(`http://localhost:8000/Account/${currentUser}`)
+        .get(`${backend_url}Account/${currentUser}`)
 
         .then((response) => {
           const user = response.data;
@@ -71,7 +74,8 @@ const Account = () => {
 
     axios
 
-    .post(`http://localhost:8000/UpdateAccount/${currentUser}`, formState)
+    // .post(`http://localhost:8000/UpdateAccount/${currentUser}`, formState)
+    .post(`${backend_url}UpdateAccount/${currentUser}`, formState)
 
     .then(response => {
       console.log("Console log after axios.post")

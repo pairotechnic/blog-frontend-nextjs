@@ -4,6 +4,8 @@ import moment from 'moment'
 import { getTimeAgo } from './getTimeAgo'
 import axios from 'axios'
 
+const backend_url = process.env.NEXT_PUBLIC_BACKEND_URL
+
 const BlogPostItem = ({ post }) => {
 
   const [likeCount, setLikeCount] = useState("")
@@ -18,7 +20,8 @@ const BlogPostItem = ({ post }) => {
     const post_id = post.post_id
 
     axios
-      .post(`http://localhost:8000/LikeDislikeCount`, { post_id })
+      // .post(`http://localhost:8000/LikeDislikeCount`, { post_id })
+      .post(`${backend_url}LikeDislikeCount`, { post_id })
       .then(response => {
         setLikeCount(response.data.like_count)
         setDislikeCount(response.data.dislike_count)
@@ -38,7 +41,8 @@ const BlogPostItem = ({ post }) => {
 
     // Fetch the currrent post reaction by the current logged in user
     axios
-      .post(`http://localhost:8000/CurrentReaction`, { currentUser, post_id })
+      // .post(`http://localhost:8000/CurrentReaction`, { currentUser, post_id })
+      .post(`${backend_url}CurrentReaction`, { currentUser, post_id })
       .then(response => {
         setCurrentReaction(response.data)
         // console.log("post_id : " + post_id)
@@ -84,7 +88,8 @@ const BlogPostItem = ({ post }) => {
 
     axios
 
-      .post(`http://localhost:8000/processReaction`, { username, post_id, clickedReaction })
+      // .post(`http://localhost:8000/processReaction`, { username, post_id, clickedReaction })
+      .post(`${backend_url}processReaction`, { username, post_id, clickedReaction })
 
       .then(response => {
 

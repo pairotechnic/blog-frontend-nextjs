@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import SearchUserList from './SearchUserList'
 
+const backend_url = process.env.NEXT_PUBLIC_BACKEND_URL
+
 const Navbar = () => {
 
   const [user, setUser] = useState(null)
@@ -30,7 +32,8 @@ const Navbar = () => {
   useEffect(() => {
 
     axios
-      .post("http://localhost:8000/Users", { searchVal })
+      // .post(`http://localhost:8000/Users`, { searchVal })
+      .post(`${backend_url}Users`, { searchVal })
       .then(response => {
         setSearchUsers(response.data)
       })

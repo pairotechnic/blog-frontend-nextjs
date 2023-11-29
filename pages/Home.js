@@ -6,6 +6,10 @@ import moment from 'moment'
 import CreateBlogButton from '@/components/CreateBlogButton'
 import BlogPostList from '@/components/BlogPostList'
 
+// dotenv.config({ path : path.resolve('../.env') })
+
+const backend_url = process.env.NEXT_PUBLIC_BACKEND_URL
+
 const Home = () => {
 
   const [posts, setPosts] = useState([])
@@ -14,7 +18,8 @@ const Home = () => {
 
     // Fetch the latest posts
     axios
-      .get('http://localhost:8000/Blogs')
+      // .get(`http://localhost:8000/Blogs`)
+      .get(`${backend_url}Blogs`)
       .then(response => setPosts(response.data))
       .catch(error => console.error('Error : ', error))
 

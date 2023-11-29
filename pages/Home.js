@@ -1,0 +1,42 @@
+import React, { useEffect, useState } from 'react'
+import Navbar from '@/components/Navbar'
+import Link from 'next/link'
+import axios from 'axios'
+import moment from 'moment'
+import CreateBlogButton from '@/components/CreateBlogButton'
+import BlogPostList from '@/components/BlogPostList'
+
+const Home = () => {
+
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+
+    // Fetch the latest posts
+    axios
+      .get('http://localhost:8000/Blogs')
+      .then(response => setPosts(response.data))
+      .catch(error => console.error('Error : ', error))
+
+  }, [])
+
+  return (
+    <div className=" bg-teal-100 min-h-screen">
+      <Navbar />
+      <div className="flex flex-col items-center pt-24">
+        {/* We add pt-20, because otherwise the top part of the page will be covered by Navbar */}
+
+        <CreateBlogButton/>
+        {/* Show latest posts here */}
+        {/* Remember : Multiline comments can't contain other multiline comments in them */}
+
+        <BlogPostList posts={posts}/>
+      </div>
+    </div>
+  )
+}
+
+export default Home
+
+// TODO :
+

@@ -5,7 +5,7 @@ import SearchUserList from './SearchUserList'
 import dotenv from 'dotenv'
 import path from 'path';
 
-dotenv.config({ path : path.resolve('../.env') })
+dotenv.config({ path: path.resolve('../.env') })
 
 const backend_url = process.env.NEXT_PUBLIC_BACKEND_URL
 
@@ -76,19 +76,37 @@ const Navbar = () => {
 
         <div className=" lg:flex lg:items-center lg:w-auto lg:justify-end text-sm">
 
+          <Link
+            href="/CreateBlog"
+            // className="w-full text-center py-3 rounded bg-blue-500 text-white hover:bg-blue-600 focus:outline-none mt-4"
+            className="block mt-4 py-3 px-3 rounded-full lg:inline-block lg:mt-0 bg-blue-600 text-white hover:text-white mr-4"
+          >
+            Write a new blog
+          </Link>
+
           {/* Using both 'href' attribute and 'as' attribute is more readable for dynamic routes */}
-          <Link href="/User/[username]" as={`/User/${user}`} className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+          <Link 
+            href="/User/[username]" 
+            as={`/User/${user}`} 
+            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+          >
             Profile
           </Link>
-          <Link href="/Account" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+
+          <Link 
+            href="/Account" 
+            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+          >
             Account Details
           </Link>
-          <Link 
-          href="/" 
-          className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+
+          <Link
+            href="/"
+            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
           >
             Log Out
           </Link>
+
           <p className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-red-600 mr-4">
             Welcome, {user}
           </p>
@@ -98,7 +116,7 @@ const Navbar = () => {
       </nav>
 
       <div>
-        { isFocused && <SearchUserList users={searchUsers} handleSearchUserItemClick={handleSearchUserItemClick}/>}
+        {isFocused && <SearchUserList users={searchUsers} handleSearchUserItemClick={handleSearchUserItemClick} />}
       </div>
 
     </>

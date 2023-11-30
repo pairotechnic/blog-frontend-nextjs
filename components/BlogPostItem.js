@@ -3,6 +3,10 @@ import Link from 'next/link'
 import moment from 'moment'
 import { getTimeAgo } from './getTimeAgo'
 import axios from 'axios'
+import dotenv from 'dotenv'
+import path from 'path';
+
+dotenv.config({ path : path.resolve('../.env') })
 
 const backend_url = process.env.NEXT_PUBLIC_BACKEND_URL
 

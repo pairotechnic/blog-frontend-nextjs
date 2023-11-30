@@ -3,6 +3,10 @@ import Navbar from '../components/Navbar'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import dotenv from 'dotenv'
+import path from 'path';
+
+dotenv.config({ path : path.resolve('../.env') })
 
 const backend_url = process.env.NEXT_PUBLIC_BACKEND_URL
 

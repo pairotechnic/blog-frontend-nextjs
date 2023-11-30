@@ -3,8 +3,10 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { getTimeAgo } from './getTimeAgo'
 import { useRouter } from 'next/router'
+import dotenv from 'dotenv'
+import path from 'path';
 
-// dotenv.config({ path : path.resolve('../.env') })
+dotenv.config({ path : path.resolve('../.env') })
 
 const backend_url = process.env.NEXT_PUBLIC_BACKEND_URL
 

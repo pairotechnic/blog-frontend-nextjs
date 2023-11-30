@@ -5,8 +5,10 @@ import axios from 'axios'
 import moment from 'moment'
 import CreateBlogButton from '@/components/CreateBlogButton'
 import BlogPostList from '@/components/BlogPostList'
+import dotenv from 'dotenv'
+import path from 'path';
 
-// dotenv.config({ path : path.resolve('../.env') })
+dotenv.config({ path : path.resolve('../.env') })
 
 const backend_url = process.env.NEXT_PUBLIC_BACKEND_URL
 

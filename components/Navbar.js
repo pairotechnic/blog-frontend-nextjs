@@ -2,6 +2,10 @@ import axios from 'axios'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import SearchUserList from './SearchUserList'
+import dotenv from 'dotenv'
+import path from 'path';
+
+dotenv.config({ path : path.resolve('../.env') })
 
 const backend_url = process.env.NEXT_PUBLIC_BACKEND_URL
 

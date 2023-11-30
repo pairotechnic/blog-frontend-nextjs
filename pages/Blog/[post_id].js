@@ -140,7 +140,7 @@ const BlogPage = () => {
 
       <Navbar />
 
-      <div className="flex flex-col items-center pt-20">
+      <div className="flex flex-col items-center pt-52">
         <div className="w-1/2 flex flex-col">
 
           <BlogPostItem post={post} />

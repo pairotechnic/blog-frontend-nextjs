@@ -35,6 +35,10 @@ const Login = () => {
 
     console.log("Console log Before axios.post ")
 
+    console.log(`Backend url : ${backend_url}login`)
+
+    console.log(`formstate : ${JSON.stringify(formState)}` )
+
     axios
 
       // .post(`http://localhost:8000/login`, formState)
@@ -42,7 +46,7 @@ const Login = () => {
 
       .then(response => {
 
-        console.log("Conaole log After axios.post ")
+        console.log("Console log After axios.post ")
         console.log(response.data);
         // setUser(formState.username);
         // Note: Remember to handle cases where the user logs out or clears the browser storage to ensure the user state is properly updated and cleared.

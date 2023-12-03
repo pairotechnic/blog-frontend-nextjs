@@ -30,7 +30,7 @@ const Home = () => {
   return (
     <div className=" bg-teal-100 min-h-screen">
       <Navbar />
-      <div className="flex flex-col items-center sm:pt-24 md:pt-24 lg:pt-24 xl:pt-24 2xl:pt-24">
+      <div className="flex flex-col items-center sm:pt-80 md:pt-80 lg:pt-80 xl:pt-80 2xl:pt-80">
         {/* We add pt-20, because otherwise the top part of the page will be covered by Navbar */}
 
         <CreateBlogButton/>
